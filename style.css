@@ -376,6 +376,8 @@ input:where([type="text"], [type="email"], ) {
 
 .numbered-items {
   counter-reset: count;
+  width: fit-content;
+  margin-inline: auto;
 }
 
 .numbered-items li {
@@ -425,12 +427,15 @@ input:where([type="text"], [type="email"], ) {
 }
 @media (max-width: 30em) {
   .numbered-items div::after {
+    --bg: var(--clr-accent-100);
     content: "";
     display: block;
     z-index: -1;
+    border-radius: 100vw 0 0 100vw;
     grid-column: 1 / -1;
     grid-row: 1 / 2;
-    background-color: orange;
+    box-shadow: 5em 0 0 var(--bg);
+    background-color: var(--bg);
   }
 }
 
@@ -449,7 +454,7 @@ input:where([type="text"], [type="email"], ) {
 }
 .container {
   --max-width: 1110px;
-  --padding: 1rem;
+  --container-padding: 1rem;
 
   width: min(var(--max-width), 100% - (var(--padding) * 2));
   margin-inline: auto;
@@ -480,6 +485,22 @@ input:where([type="text"], [type="email"], ) {
 }
 :where(.flow :not(:first-child)) {
   margin-top: var(--flow-spacer, 3em);
+}
+.text-center {
+  text-align: center;
+}
+
+.text-center p {
+  margin-inline: auto;
+}
+
+@media (max-width: 50em) {
+  .text-center-sm-only {
+    text-align: center;
+  }
+  .text-center-sm-only p {
+    margin-inline: auto;
+  }
 }
 
 .text-primary-400 {
@@ -550,6 +571,10 @@ input:where([type="text"], [type="email"], ) {
 }
 .padding-block-700 {
   padding-block: var(--size-700);
+}
+
+.margin-bottom-700 {
+  margin-block-end: var(--size-700);
 }
 .display-sm-none {
   display: none;
